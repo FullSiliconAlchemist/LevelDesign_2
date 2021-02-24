@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public float speedIncrease = 12.0f;
+    public float baseSpeed = 10.0f;
     public float gravity = 9.81f;
     public float jumpHeight = 20f;
 
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+
+    public StaminaScript staminaControl;
 
     void Update()
     {
@@ -35,19 +38,30 @@ public class PlayerMovement : MonoBehaviour
         // this goes for vertical as well
         Vector3 movement = transform.right * x + transform.forward * z;
 
-        controller.Move(movement * Time.deltaTime * speedIncrease);
+        // Movement function
+        if (Input.GetButton("Fire3") && staminaControl.GetCurrentStamina() > 100)
+        {
+            Debug.Log(staminaControl.GetCurrentStamina());
+            controller.Move(movement * baseSpeed * speedIncrease * Time.deltaTime);
+            staminaControl.UseStamina(10.0f);
+        }
+        else
+        {
+            controller.Move(movement * baseSpeed * Time.deltaTime);
+            staminaControl.RecoverStamina();
+        }
 
+        // Jump function
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             float product = jumpHeight * 2f * gravity;
-            Debug.Log("Jump product: " + (product));
-            Debug.Log("Jump force: " + Mathf.Sqrt(product));
             velocity.y = Mathf.Sqrt(product);
         }
 
         // Have to decrement or else gravity ends up being reversed for some reason
         velocity.y -= gravity * Time.deltaTime;
 
+        // Jump movement
         controller.Move(velocity * Time.deltaTime);
     }
 }

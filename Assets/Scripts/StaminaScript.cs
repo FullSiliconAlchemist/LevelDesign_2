@@ -29,7 +29,7 @@ public class StaminaScript : MonoBehaviour
 
     public void UseStamina(float amount)
     {
-        if (currentStamina - amount >= amount)
+        if (currentStamina - amount >= 0)
         {
             // Has enough stamina
             currentStamina -= amount;
@@ -38,7 +38,7 @@ public class StaminaScript : MonoBehaviour
         else
         {
             staminaBar.value = 0;
-            Debug.Log("Not enough stamina");
+            //Debug.Log("Not enough stamina");
         }
     }
 

@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public float speedIncrease = 12.0f;
-    public float baseSpeed = 10.0f;
+    public float baseSpeed = 20.0f;
     public float gravity = 9.81f;
     public float jumpHeight = 20f;
 
@@ -41,9 +41,8 @@ public class PlayerMovement : MonoBehaviour
         // Movement function
         if (Input.GetButton("Fire3") && staminaControl.GetCurrentStamina() > 100)
         {
-            Debug.Log(staminaControl.GetCurrentStamina());
             controller.Move(movement * baseSpeed * speedIncrease * Time.deltaTime);
-            staminaControl.UseStamina(10.0f);
+            staminaControl.UseStamina(25.0f);
         }
         else
         {

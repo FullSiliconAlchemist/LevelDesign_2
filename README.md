@@ -2,7 +2,8 @@
 
  Prototype number 2: Tele-Parkour
  
- Although the level is unfinished, the point of the game is to run through an obstacle course and defeat enemies that will block your path to the goal.
+ The point of the game is to run through a course, defeat enemies that block your path without losing all of your life, and reach the goal.
+ Ennemies are the round red balls, if they touch your character you lose life. Every successful punch you land on the balls is a point, if you punch them off the arena you get 10 points. Reach the goal without losing your life and get the highest score possible!
  
  Your controls are WASD to move, SPACE to jump and L-SHIFT to boost jump and Left-Click to attack.
  
@@ -22,3 +23,6 @@
 
 
  5. What kind of visual or audio effects would you have liked to see during the gameplay?
+
+
+ 6. Does the objective of the game provide a challenge?
